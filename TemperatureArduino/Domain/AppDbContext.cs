@@ -10,6 +10,6 @@ namespace TemperatureArduino.Domain
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
-        public DbSet<Temperature> ServiceItems { get; set; }
+        public DbSet<Temperature> Temperatures { get; set; }
     }
 }

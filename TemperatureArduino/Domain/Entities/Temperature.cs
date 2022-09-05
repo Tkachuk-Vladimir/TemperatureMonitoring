@@ -5,7 +5,7 @@ namespace TemperatureArduino.Domain.Entities
 {
     public class Temperature
     {
-        protected Temperature() => DateAdded = DateTime.UtcNow;
+        public Temperature() => DateAdded = DateTime.UtcNow;
 
         [Required]
         public Guid Id { get; set; }
