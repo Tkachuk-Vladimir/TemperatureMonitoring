@@ -6,32 +6,26 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using TemperatureArduino.Models;
+using TemperatureArduino.Domain;
+using TemperatureArduino.Domain.Entities;
+using TemperatureArduino.Domain.Repositories.Abstract;
+using TemperatureArduino.Domain.Repositories.EntityFramework;
 
 namespace TemperatureArduino.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ITemperatureRepository temperatureRepository;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ITemperatureRepository temperatureRepository)
         {
-            _logger = logger;
+            this.temperatureRepository = temperatureRepository;
         }
 
         public IActionResult Index()
         {
-            return View();
+            return View(temperatureRepository.GetTemperature());
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
     }
 }

@@ -8,7 +8,7 @@ namespace TemperatureArduino.Domain.Entities
         public Temperature() => DateAdded = DateTime.UtcNow;
 
         [Required]
-        public Guid Id { get; set; }
+        public int Id { get; set; }
 
         [Display(Name = "Temperature")]
         public int Temperatura { get; set; }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using TemperatureArduino.Domain.Entities;
@@ -16,12 +17,17 @@ namespace TemperatureArduino.Domain.Repositories.EntityFramework
             this.context = context;
         }
 
-        public IQueryable<Temperature> GetTemperature()
+       //public IQueryable<Temperature> GetTemperature()
+        //{
+          //  return context.Temperatures;
+        //}
+
+        public List<Temperature> GetTemperature()
         {
-            return context.Temperatures;
+           return context.Temperatures.ToList();
         }
 
-        public Temperature GetTemperatureById(Guid id)
+        public Temperature GetTemperatureById(int id)
         {
             return context.Temperatures.FirstOrDefault(x => x.Id == id);
         }
@@ -35,7 +41,7 @@ namespace TemperatureArduino.Domain.Repositories.EntityFramework
             context.SaveChanges();
         }
 
-        public void DeleteTemperature(Guid id)
+        public void DeleteTemperature(int id)
         {
             context.Temperatures.Remove(new Temperature() { Id = id });
             context.SaveChanges();

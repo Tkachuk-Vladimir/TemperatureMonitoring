@@ -18,9 +18,9 @@ namespace TemperatureArduino.Migrations
 
             modelBuilder.Entity("TemperatureArduino.Domain.Entities.Temperature", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("DateAdded")
                         .HasColumnType("TEXT");
