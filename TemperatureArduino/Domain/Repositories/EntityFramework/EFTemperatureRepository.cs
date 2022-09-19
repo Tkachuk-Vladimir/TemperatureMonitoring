@@ -16,10 +16,9 @@ namespace TemperatureArduino.Domain.Repositories.EntityFramework
         {
             this.context = context;
         }
-
-       //public IQueryable<Temperature> GetTemperature()
+        //public IQueryable<Temperature> GetTemperature()
         //{
-          //  return context.Temperatures;
+        //  return context.Temperatures;
         //}
 
         public List<Temperature> GetTemperature()
@@ -36,6 +35,7 @@ namespace TemperatureArduino.Domain.Repositories.EntityFramework
         {
             if (entity.Id == default)
                 context.Entry(entity).State = EntityState.Added;
+                //context.Temperatures.Add(entity);
             else
                 context.Entry(entity).State = EntityState.Modified;
             context.SaveChanges();

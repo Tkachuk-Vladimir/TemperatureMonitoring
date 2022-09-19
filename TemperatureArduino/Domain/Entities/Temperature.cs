@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TemperatureArduino.Domain.Entities
 {
@@ -7,6 +8,8 @@ namespace TemperatureArduino.Domain.Entities
     {
         public Temperature() => DateAdded = DateTime.UtcNow;
 
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Required]
         public int Id { get; set; }
 

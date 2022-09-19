@@ -16,6 +16,8 @@
     <None Remove="Domain\Repositories\Abstract\" />
     <None Remove="Domain\Repositories\EntityFramework\" />
     <None Remove="Service\" />
+    <None Remove="System.IO.Ports" />
+    <None Remove="_serialPort\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.0" />
@@ -29,6 +31,7 @@
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.0" />
+    <PackageReference Include="System.IO.Ports" Version="5.0.0" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Domain\" />
@@ -37,5 +40,6 @@
     <Folder Include="Domain\Repositories\Abstract\" />
     <Folder Include="Domain\Repositories\EntityFramework\" />
     <Folder Include="Service\" />
+    <Folder Include="_serialPort\" />
   </ItemGroup>
 </Project>
