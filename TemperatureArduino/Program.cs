@@ -40,46 +40,15 @@ namespace TemperatureArduino
                         serialPort.DiscardInBuffer();
                     }
                 }
-                
             }
             catch(IOException ex)
             {
                 Console.WriteLine(ex);
             }
 
-            
-            /*
-            try
-             {
-                 serialPort.Open();
-
-                 while (true)
-                 {
-                     if (serialPort.BytesToRead > 0)
-                     {
-                        temperatureArduino = (int)serialPort.ReadByte();
-
-                        Temperature temperature = new Temperature()
-                        {
-                            Id = default,
-                            Temperatura = temperatureArduino,
-                            DateAdded = DateTime.Now
-                        };
-
-                        var repository = new EFTemperatureRepository(context);
-
-                        repository.SaveTemperature(temperature);
-                    }
-                 }
-             }
-             catch(IOException ex)
-             {
-                 Console.WriteLine(ex);
-             }
-            */
-
             CreateHostBuilder(args).Build().Run();
         }
+
         public static void serialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             int temperatureArduino;
