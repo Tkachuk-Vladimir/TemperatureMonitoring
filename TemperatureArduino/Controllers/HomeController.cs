@@ -24,7 +24,8 @@ namespace TemperatureArduino.Controllers
 
         public IActionResult Index()
         {
-            return View(temperatureRepository.GetTemperature());
+            var temperatureList = temperatureRepository.GetTemperature();
+            return View(temperatureList);
         }
 
     }

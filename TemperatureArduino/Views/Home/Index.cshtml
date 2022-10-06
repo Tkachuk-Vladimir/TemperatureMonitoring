@@ -1,23 +1,84 @@
-﻿@model IEnumerable<Temperature>
+﻿@model List<Temperature>
 
-<table>
-    <thead>
-        <tr>
-            <th>Temperatura</th>
-            <th>Data</th>
-        </tr>
-    </thead>
+    <table>
+        <thead>
+            <tr>
+                <th>Temperatura</th>
+                <th>Data</th>
+            </tr>
+        </thead>
 
-    <tbody>
-        @if (Model.Any())
-        {
-          @foreach (var entity in Model)
+        <tbody>
+            @if (Model.Any())
+            {
+                @foreach (var entity in Model)
                 {
                     <tr>
                         <td>@entity.Temperatura</td>
                         <td>@entity.DateAdded</td>
                     </tr>
-                }      
+                }
+            }
+        </tbody>
+    </table>
+
+<div class="text-center">
+    <h4 class="display-4"> Line Chart</h4>
+    <div class="card">
+        <div class="card-header">
+            <div class="chart1">
+                <canvas id="myChart2"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+
+<script>
+
+    var Temperature = []; //these are all javascript variables
+    var DataAdded = [];
+
+    @if(Model.Count > 0)
+    {
+        foreach(var item in Model)
+        {
+            @:Temperature.push(@item.Temperatura);
+            @:DataAdded.push(@item.DateAdded.Hour);
         }
-     </tbody>
-</table>
+    }
+    var Chart2 = document.getElementById('myChart2').getContext('2d');
+    var chart = new Chart(Chart2,
+    {
+        type: 'line',
+        data:
+        {
+            labels: DataAdded,
+            datasets: [{
+                label: "Temperature",
+                backgroundColor: 'transparent',
+                borderColor: "#ff0000",
+                borderWidth: 2,
+                pointBorderColor: false,
+                startAngle: 0,
+                data: Temperature,
+                fill: false,
+                lineTension: .4,
+                showLine: true,
+            }]
+        },
+                // Configuration options
+        options:
+        {
+            title:
+            {
+                display: true,
+                text: "Student"
+            }
+        }
+    });
+</script>
